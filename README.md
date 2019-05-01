@@ -12,3 +12,14 @@ zappa deploy
 ```
 
 Status: follow the progress on this issue: [https://github.com/plotly/dash/issues/22](https://github.com/plotly/dash/issues/22)
+
+
+Notes:
+1. dash.ly should not be installed otherwise the deploy will fail
+2. Without custom domain, you will need to do the following:
+```
+if __name__ == '__main__':
+    app.run_server(debug=True)
+else:
+    app.config['requests_pathname_prefix'] = '/dev' + app.config['requests_pathname_prefix']
+```
